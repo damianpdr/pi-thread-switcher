@@ -222,7 +222,7 @@ class ThreadSwitcher extends Container implements Focusable {
       return;
     }
 
-    if (matchesKey(data, Key.ctrl("t"))) {
+    if (matchesKey(data, Key.tab)) {
       this.scope = this.scope === "current" ? "all" : "current";
       this.setSessions(this.scope === "all" && this.allSessions ? this.allSessions : this.currentSessions);
       this.invalidate();
@@ -340,7 +340,7 @@ class ThreadSwitcher extends Container implements Focusable {
       "shift+↑↓ scroll",
       "enter select",
       "esc cancel",
-      `ctrl+t ${this.scope === "current" ? "all" : "project"}`,
+      `tab ${this.scope === "current" ? "all" : "project"}`,
     ].map((s) => t.fg("dim", s)).join(t.fg("dim", " · "));
     out.push(truncateToWidth(" " + h, width));
 
@@ -469,13 +469,5 @@ export default function (pi: ExtensionAPI) {
     handler: async (_args, ctx) => { await showThreadSwitcher(ctx); },
   });
 
-  pi.registerShortcut("ctrl+t", {
-    description: "Thread switcher",
-    handler: async (ctx) => {
-      if (ctx.hasUI && ctx.isIdle()) {
-        ctx.ui.setEditorText("/threads");
-        ctx.ui.notify("Press Enter to open thread switcher", "info");
-      }
-    },
-  });
+
 }
