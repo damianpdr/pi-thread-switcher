@@ -13,12 +13,6 @@
 
 <br/>
 
-<p align="center">
-  <img src="screenshot.png" alt="Thread Switcher — floating overlay with live session preview" width="800" />
-</p>
-
-<br/>
-
 ## Overview
 
 A pi extension that adds a `/threads` command for fast session switching. Opens a centered floating panel over a live dimmed preview of the selected session — navigate threads and see their content in real-time before switching.
